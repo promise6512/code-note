@@ -1,0 +1,1 @@
+console.log(Array.from(new Array(9)).map(()=>1))
