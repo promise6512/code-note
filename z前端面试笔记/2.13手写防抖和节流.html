@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="debounce">防抖</button>
+  <br>
+  <button id="throttle">节流</button>
+  <script>
+    const debounce = (fun, wait) => {
+      let timer = null;
+      return () => {
+        // const argus = arguments;
+        timer && clearTimeout(timer);
+        timer = setTimeout(() => {
+          fun()
+        }, wait)
+      }
+    }
+
+    const throttle = (fun,wait) => {
+      let timer = null;
+      return () => {
+        if(!timer){
+          timer = setTimeout(()=>{
+            fun();
+            timer = null;
+          },wait)
+        }
+      }
+    }
+    const deb = document.getElementById("debounce");
+    const thr = document.getElementById("throttle");
+    const fun = debounce(() => {
+      console.log("debounce")
+    }, 1000)
+    const fun1 = throttle(()=>{
+      console.log("throttle")
+    },1000)
+    deb.onclick = fun;
+    thr.onclick = fun1;
+  </script>
+</body>
+
+</html>

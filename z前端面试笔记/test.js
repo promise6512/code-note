@@ -1,6 +1,2 @@
-const obj = {
-  a:1,
-  b:2,
-  c:3
-}
-console.log(Date.now())
+let [a,b] = [1,2]
+console.log(a)
